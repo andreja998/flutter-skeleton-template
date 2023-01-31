@@ -60,6 +60,31 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+    
+    flavorDimensions "default"
+    productFlavors {
+        production {
+            dimension "default"
+            resValue "string", "app_name", "Flavor Andreja Prod"
+            applicationIdSuffix ""
+        }
+        staging {
+            dimension "default"
+            resValue "string", "app_name", "Flavor Andreja Staging"
+            applicationIdSuffix ".stg"
+        }
+        development {
+            dimension "default"
+            resValue "string", "app_name", "Flavor Andreja Dev"
+            applicationIdSuffix ".dev"
+        }
+        seifDevelopment {
+            dimension "default"
+            resValue "string", "app_name", "Flavor Seif Dev"
+            applicationIdSuffix ".dev"
+        }
+    }
+
 }
 
 flutter {

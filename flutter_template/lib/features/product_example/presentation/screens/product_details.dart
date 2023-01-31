@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_template/features/product_example/application/bloc/product_details_bloc.dart';
+import 'package:flutter_template/flavors.dart';
 
 class ProductDetails extends StatefulWidget {
   const ProductDetails({super.key});
@@ -22,14 +23,24 @@ class _ProductDetailsState extends State<ProductDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Product details'),
+        title: Text('${F.title}'),
       ),
       body: BlocBuilder<ProductDetailsBloc, ProductDetailsState>(
         builder: ((context, state) {
           return state.when(initial: () {
-            return Text('INITIALIZATION');
+            return Column(
+              children: [
+                Text('INITIALIZATION'),
+                ElevatedButton(onPressed: () {}, child: Text('Andreja'))
+              ],
+            );
           }, loaded: ((productEntity) {
-            return Text(productEntity.description);
+            return Column(
+              children: [
+                Text(productEntity.description),
+                ElevatedButton(onPressed: () {}, child: Text('Andreja'))
+              ],
+            );
           }), failure: ((productFailure) {
             return Text('FAILURE');
           }));
